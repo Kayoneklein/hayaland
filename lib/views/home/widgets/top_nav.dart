@@ -39,6 +39,8 @@ class _TopNavText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return BlocBuilder<HomeBloc, HomeState>(builder: (_, state) {
       return MouseRegion(
         onExit: (PointerExitEvent hovered) {
@@ -61,7 +63,7 @@ class _TopNavText extends StatelessWidget {
           ),
           child: HText(
             text: text,
-            style: HTextStyles.body(
+            style: theme.textTheme.bodyMedium?.copyWith(
               fontWeight: FontWeight.bold,
             ),
           ),

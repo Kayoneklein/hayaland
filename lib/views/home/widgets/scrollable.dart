@@ -6,46 +6,33 @@ class ScrollComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    final EdgeInsets padding =
-        EdgeInsets.symmetric(horizontal: size.width * 0.2);
 
     return CustomScrollView(
       slivers: [
-        SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (BuildContext ctx, int index) {
-              return const TopNav();
-            },
-            childCount: 1,
+        if (size.width > tablet)
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext ctx, int index) {
+                return const TopNav();
+              },
+              childCount: 1,
+            ),
           ),
-        ),
-        const SliverAppBar(
-          backgroundColor: HColors.black,
-          automaticallyImplyLeading: false,
-          pinned: true,
-          // stretch: true,
-          actions: [
-            _NavItem(text: 'Home', leftPadding: false),
-            _NavItem(text: 'Contact'),
-            _NavItem(text: 'About us'),
-            _NavItem(text: 'Marketplace'),
-            _NavItem(text: 'Wishlist'),
-            _NavItem(text: '', isIcon: true, rightPadding: false),
-          ],
-          // flexibleSpace: Padding(
-          //   padding: padding,
-          //   child: Row(
-          //     children: const [
-          //       _NavItem(text: 'Home', leftPadding: false),
-          //       _NavItem(text: 'Contact'),
-          //       _NavItem(text: 'About us'),
-          //       _NavItem(text: 'Marketplace'),
-          //       _NavItem(text: 'Wishlist'),
-          //       _NavItem(text: '', isIcon: true, rightPadding: false),
-          //     ],
-          //   ),
-          // ),
-        ),
+        if (size.width > tablet)
+          const SliverAppBar(
+            backgroundColor: HColors.black,
+            automaticallyImplyLeading: false,
+            pinned: true,
+            // stretch: true,
+            actions: [
+              _NavItem(text: 'Home', leftPadding: false),
+              _NavItem(text: 'Contact'),
+              _NavItem(text: 'About us'),
+              _NavItem(text: 'Marketplace'),
+              _NavItem(text: 'Wishlist'),
+              _NavItem(text: '', isIcon: true, rightPadding: false),
+            ],
+          ),
         SliverList(
           delegate: SliverChildBuilderDelegate(
             (BuildContext ctx, int index) {
@@ -76,6 +63,8 @@ class _NavItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final double symmetricPadding = size.width * 0.035;
+    final theme = Theme.of(context);
+
     return BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
       return Padding(
         padding: EdgeInsets.only(
@@ -100,7 +89,7 @@ class _NavItem extends StatelessWidget {
                 )
               : HText(
                   text: text ?? '',
-                  style: HTextStyles.body(
+                  style: theme.textTheme.bodyMedium?.copyWith(
                     color: state.hoveredNavItem == text
                         ? HColors.white
                         : HColors.grey,

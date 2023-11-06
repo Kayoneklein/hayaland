@@ -4,7 +4,6 @@ import 'package:hayaland/bloc/blocs/home_bloc.dart';
 import 'package:hayaland/constants/h_colors.dart';
 import 'package:hayaland/constants/h_images.dart';
 import 'package:hayaland/constants/variables.dart';
-import 'package:hayaland/views/utils/h_text_styles.dart';
 import 'package:hayaland/views/widgets/button.dart';
 import 'package:hayaland/views/widgets/h_text.dart';
 import 'package:hayaland/views/widgets/h_text_form_field.dart';

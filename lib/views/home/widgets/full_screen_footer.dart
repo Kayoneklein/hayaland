@@ -6,15 +6,16 @@ class FullScreenMobileFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final theme = Theme.of(context);
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
+        const Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children: [
             FooterLinks(
               header: 1,
               showLinks: false,
@@ -55,7 +56,8 @@ class FullScreenMobileFooter extends StatelessWidget {
           children: [
             HText(
               text: 'Contact us here for more info',
-              style: HTextStyles.h2(fontSize: 16, color: HColors.white),
+              style: theme.textTheme.headlineMedium
+                  ?.copyWith(fontSize: 16, color: HColors.white),
             ),
             const VerticalSpace(20),
             Row(

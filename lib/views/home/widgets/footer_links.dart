@@ -16,6 +16,8 @@ class FooterLinks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    final theme = Theme.of(context);
+
     return Padding(
       padding: const EdgeInsets.only(right: 20.0),
       child: Column(
@@ -25,14 +27,16 @@ class FooterLinks extends StatelessWidget {
           size.width > tablet
               ? HText(
                   text: 'Header $header',
-                  style: HTextStyles.h2(fontSize: 12, color: HColors.white),
+                  style: theme.textTheme.headlineMedium
+                      ?.copyWith(fontSize: 12, color: HColors.white),
                 )
               : Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     HText(
                       text: 'Header $header',
-                      style: HTextStyles.h2(fontSize: 12, color: HColors.white),
+                      style: theme.textTheme.headlineMedium
+                          ?.copyWith(fontSize: 12, color: HColors.white),
                     ),
                     InkWell(
                       onTap: () {
@@ -54,7 +58,7 @@ class FooterLinks extends StatelessWidget {
                 padding: const EdgeInsets.all(5.0),
                 child: HText(
                   text: link,
-                  style: HTextStyles.body(
+                  style: theme.textTheme.bodyMedium?.copyWith(
                     fontSize: 12,
                     color: HColors.white,
                   ),

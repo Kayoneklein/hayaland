@@ -6,6 +6,7 @@ class FullScreenMarketDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final theme = Theme.of(context);
 
     return BlocBuilder<HomeBloc, HomeState>(builder: (_, state) {
       return SizedBox(
@@ -30,7 +31,7 @@ class FullScreenMarketDisplay extends StatelessWidget {
                     const VerticalSpace(20),
                     HText(
                       text: iPhone14,
-                      style: HTextStyles.body(
+                      style: theme.textTheme.bodyMedium?.copyWith(
                         fontWeight: FontWeight.w600,
                       ),
                     ),

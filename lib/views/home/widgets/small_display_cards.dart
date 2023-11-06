@@ -15,6 +15,8 @@ class SmallDisplayCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     final Size size = MediaQuery.of(context).size;
     return BlocBuilder<HomeBloc, HomeState>(builder: (_, state) {
       return MouseRegion(
@@ -34,7 +36,7 @@ class SmallDisplayCard extends StatelessWidget {
               const VerticalSpace(20),
               HText(
                 text: deviceName,
-                style: HTextStyles.body(
+                style: theme.textTheme.bodyMedium?.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
               ),

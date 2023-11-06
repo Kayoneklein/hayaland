@@ -11,8 +11,72 @@ class HomeBody extends StatelessWidget {
     EdgeInsets.symmetric(horizontal: size.width * 0.2);
     final controller = CarouselController();
 
+    final theme = Theme.of(context);
+
     return Column(
       children: [
+        if (size.width < tablet)
+          Padding(
+            padding: const EdgeInsets.only(
+              top: 10.0,
+              bottom: 30,
+              right: 10,
+              left: 10,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(
+                  children: [
+                    const Icon(Icons.menu),
+                    HText(
+                      text: 'Menu',
+                      style: theme.textTheme.bodyMedium?.copyWith(fontSize: 10),
+                    ),
+                  ],
+                ),
+                Image.asset(
+                  HImages.logo,
+                  width: size.width * 0.15,
+                ),
+                Column(
+                  children: [
+                    Stack(
+                      children: [
+                        const Icon(Icons.shopping_cart, size: 30),
+                        Positioned(
+                          right: 2,
+                          child: Container(
+                            width: 15,
+                            height: 15,
+                            decoration: BoxDecoration(
+                              color: HColors.red,
+                              borderRadius: BorderRadius.circular(7.5),
+                            ),
+                            child: Center(
+                              child: HText(
+                                text: '0',
+                                style: theme.textTheme.bodyMedium?.copyWith(
+                                  fontSize: 10,
+                                  color: HColors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    HText(
+                      text: 'Cart',
+                      style: theme.textTheme.bodyMedium?.copyWith(fontSize: 10),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
         const VerticalSpace(20),
         SizedBox(
           height: size.height * 0.53,
@@ -45,7 +109,8 @@ class HomeBody extends StatelessWidget {
             HText(
               text: 'Buyback \n Some random texts was written '
                   '\n Your Device, Onto New Value',
-              style: HTextStyles.h2(fontSize: size.width * 0.03),
+              style: theme.textTheme.headlineMedium
+                  ?.copyWith(fontSize: size.width * 0.03),
               align: TextAlign.center,
             ),
             const VerticalSpace(30),
@@ -58,7 +123,8 @@ class HomeBody extends StatelessWidget {
                     ' (iPhone, Mac notebooks, iPad and Apple Watch). If your'
                     ' device isn\'t eligible for credit, we\'ll you recycle it '
                     'for free. it\'s a win-win for you and the planet.',
-                style: HTextStyles.body(fontSize: size.width * 0.0175),
+                style: theme.textTheme.bodyMedium
+                    ?.copyWith(fontSize: size.width * 0.0175),
                 align: TextAlign.center,
               ),
             ),
@@ -71,7 +137,8 @@ class HomeBody extends StatelessWidget {
             children: [
               HText(
                 text: 'Product display header',
-                style: HTextStyles.h2(fontSize: size.width * 0.03),
+                style: theme.textTheme.headlineMedium
+                    ?.copyWith(fontSize: size.width * 0.03),
               ),
               size.width > tablet
                   ? const FullScreenMarketDisplay()
@@ -89,7 +156,8 @@ class HomeBody extends StatelessWidget {
               children: [
                 HText(
                   text: 'Contact us to make a purchase from our store',
-                  style: HTextStyles.h2(fontSize: size.width * 0.02),
+                  style: theme.textTheme.headlineMedium
+                      ?.copyWith(fontSize: size.width * 0.02),
                   align: TextAlign.center,
                 ),
                 const VerticalSpace(20),
@@ -134,7 +202,7 @@ class HomeBody extends StatelessWidget {
               const VerticalSpace(30),
               HText(
                 text: 'You can trade an iPhone or a samsung galaxy phone',
-                style: HTextStyles.h2(
+                style: theme.textTheme.headlineMedium?.copyWith(
                   fontWeight: FontWeight.w700,
                   fontSize: size.width * 0.02,
                 ),
@@ -183,9 +251,9 @@ class HomeBody extends StatelessWidget {
                       ),
                     ),
               const VerticalSpace(50),
-              Column(
+              const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   MarketRow(
                     title: 'What\'s Black Market Trade-in?',
                     description: 'An easy win for your wallet and the planet. '
@@ -293,11 +361,12 @@ class HomeBody extends StatelessWidget {
                               children: [
                                 HText(
                                   text: slider.title,
-                                  style: HTextStyles.h2(),
+                                  style: theme.textTheme.headlineMedium,
                                 ),
                                 HText(
                                   text: slider.subtitle,
-                                  style: HTextStyles.h2(color: HColors.blue),
+                                  style: theme.textTheme.headlineMedium
+                                      ?.copyWith(color: HColors.blue),
                                 ),
                               ],
                             ),
@@ -361,14 +430,14 @@ class HomeBody extends StatelessWidget {
                           HText(
                             text: '2023 Sachi Tsusho International Co. Ltd.'
                                 ' All Rights Reserved',
-                            style: HTextStyles.body(
+                            style: theme.textTheme.bodyMedium?.copyWith(
                               color: HColors.white,
                               fontSize: 10,
                             ),
                           ),
                           HText(
                             text: 'This is a random footer text',
-                            style: HTextStyles.body(
+                            style: theme.textTheme.bodyMedium?.copyWith(
                               color: HColors.white,
                               fontSize: 10,
                             ),
@@ -380,7 +449,7 @@ class HomeBody extends StatelessWidget {
                           HText(
                             text: '2023 Sachi Tsusho International Co. Ltd.'
                                 ' All Rights Reserved',
-                            style: HTextStyles.body(
+                            style: theme.textTheme.bodyMedium?.copyWith(
                               color: HColors.white,
                               fontSize: 10,
                             ),
@@ -388,7 +457,7 @@ class HomeBody extends StatelessWidget {
                           const VerticalSpace(20),
                           HText(
                             text: 'This is a random footer text',
-                            style: HTextStyles.body(
+                            style: theme.textTheme.bodyMedium?.copyWith(
                               color: HColors.white,
                               fontSize: 10,
                             ),

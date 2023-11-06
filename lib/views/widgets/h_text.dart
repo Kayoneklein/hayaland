@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hayaland/views/utils/h_text_styles.dart';
 
 class HText extends StatelessWidget {
   final String text;
@@ -14,9 +13,11 @@ class HText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Text(
       text,
-      style: style ?? HTextStyles.body(),
+      style: style ?? theme.textTheme.bodyMedium,
       textAlign: align,
     );
   }

@@ -15,6 +15,8 @@ class _MobileScreenFooterState extends State<MobileScreenFooter> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    final theme = Theme.of(context);
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,7 +27,10 @@ class _MobileScreenFooterState extends State<MobileScreenFooter> {
           children: [
             HText(
               text: 'Contact us here for more info',
-              style: HTextStyles.h2(fontSize: 16, color: HColors.white),
+              style: theme.textTheme.headlineMedium?.copyWith(
+                fontSize: 16,
+                color: HColors.white,
+              ),
             ),
             const VerticalSpace(20),
             Row(

@@ -63,17 +63,19 @@ class _TextSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    final theme = Theme.of(context);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         HText(
           text: title,
-          style: HTextStyles.h2(fontSize: size.width * 0.02),
+          style: theme.textTheme.headlineMedium
+              ?.copyWith(fontSize: size.width * 0.02),
         ),
         HText(
           text: description,
-          style: HTextStyles.body(fontSize: 12),
+          style: theme.textTheme.bodyMedium?.copyWith(fontSize: 12),
         ),
       ],
     );

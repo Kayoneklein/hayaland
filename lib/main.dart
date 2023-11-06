@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hayaland/bloc/blocs/home_bloc.dart';
+import 'package:hayaland/constants/h_colors.dart';
 
 import 'constants/config.dart';
 import 'views/home/index.dart';
@@ -21,6 +22,17 @@ class MyApp extends StatelessWidget {
       title: AppConfig.appName,
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        textTheme: const TextTheme(
+          bodyMedium: TextStyle(
+            fontSize: 14,
+            color: HColors.black,
+          ),
+          headlineMedium: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: HColors.black,
+          ),
+        ),
       ),
       home: BlocProvider(
         create: (ctx) => HomeBloc(),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hayaland/views/utils/h_text_styles.dart';
 import 'package:hayaland/views/widgets/h_text.dart';
 
 class Button extends StatelessWidget {
@@ -25,6 +24,8 @@ class Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return TextButton(
       onPressed: () => onPressed(),
       style: ButtonStyle(
@@ -49,7 +50,7 @@ class Button extends StatelessWidget {
           child: HText(
             text: text,
             align: TextAlign.center,
-            style: HTextStyles.body(color: color),
+            style: theme.textTheme.bodyMedium?.copyWith(color: color),
           ),
         ),
       ),
